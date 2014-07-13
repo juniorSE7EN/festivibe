@@ -1,13 +1,29 @@
 define(
-  [ 'backbone' ],
-  function( Backbone ) {
+  [ 'backbone',
+    'events' ],
+  function( Backbone, events ) {
     'use strict';
 
     return Backbone.View.extend({
       tagName: 'div',
 
+      className: 'clearfix',
+
+      events: {
+        'click.blog': 'blogOnClick'
+      },
+
       template: function() {
-        return '';
+        return ''
+          + '<div class="logo">'
+          +   '<img src="img/festivibe.png" alt="Festivibe logo">'
+          + '</div>'
+          + '<nav>'
+          +   '<ul>'
+          +     '<li>blog</li>'
+          +     '<li>login</li>'
+          +   '</ul>'
+          + '</nav>';
       },
 
       initialize: function() {
@@ -16,6 +32,11 @@ define(
 
       render: function() {
         this.$el.html( this.template() );
+      },
+
+      // event listeners
+      blogOnClick: function( e ) {
+        events.trigger( 'router:hashChange', { route: 'blog', trigger: true } );
       }
     });
   }

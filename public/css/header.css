@@ -1,0 +1,32 @@
+header {
+  height: 80px;
+  padding: 0 4%;
+  background: #343C40;
+  border-top: 4px solid #AEDD2B;
+}
+
+header .logo {
+  float: left;
+}
+
+header .logo img {
+  height: 32px;
+  margin: 24px 0;
+}
+
+header nav {
+  float: right;
+}
+
+header ul li {
+  display: inline-block;
+  margin-left: 32px;
+  color: #fff;
+  font-weight: 300;
+  line-height: 80px;
+}
+
+header ul li:hover {
+  color: #36C6FF;
+  cursor: pointer;
+}
