@@ -1,8 +1,7 @@
 define(
   [ 'backbone',
-    'common',
-    'models/session' ],
-  function( Backbone, common, Session ) {
+    'common' ],
+  function( Backbone, common ) {
     'use strict';
 
     return Backbone.View.extend({
@@ -28,8 +27,6 @@ define(
       },
 
       initialize: function() {
-        common.user = new Session();
-
         this.render();
       },
 
@@ -41,17 +38,27 @@ define(
         e.preventDefault();
 
         common.user.save({
-          username: this.$el.find( 'input[name="username"]' ),
-          password: this.$el.find( 'input[name="password"]' )
+          username: this.$el.find( 'input[name="username"]' ).val(),
+          password: this.$el.find( 'input[name="password"]' ).val()
         }, { success: this.onSuccess, error: this.onError } );
       },
 
       onSuccess: function( model, response, options ) {
-        console.log( model, response, options );
+        if( response.error ) return this.handler( response.error );
+
+        for( var prop in response ) {
+          model.set( prop, response[ prop ] );
+        }
+
+        common.events.trigger( 'router:hashChange', { route: 'index', trigger: true } );
       },
 
       onError: function( model, response, options ) {
         console.log( model, response, options );
+      },
+
+      handler: function( err ) {
+        console.log( err );
       }
     });
   }

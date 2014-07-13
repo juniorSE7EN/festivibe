@@ -7,7 +7,7 @@ module.exports = ( function() {
     var username = req.body.username;
     var password = req.body.password;
 
-    var user = users.getAll()[ username ];
+    var user = users.findOne( username );
     if( !user ) return res.json( { error: 'invalid username' } );
     if( user.password !== password ) return res.json( { error: 'invalid password' } );
 

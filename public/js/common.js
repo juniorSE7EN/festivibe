@@ -1,9 +1,13 @@
 define(
   [ 'underscore',
-    'backbone' ],
-  function( _, Backbone ) {
+    'backbone',
+    'models/session' ],
+  function( _, Backbone, Session ) {
     'use strict';
 
-    return { events: _.extend( {}, Backbone.Events ) };
+    return {
+      user  : new Session(),
+      events: _.extend( {}, Backbone.Events )
+    };
   }
 );

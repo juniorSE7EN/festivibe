@@ -1,15 +1,16 @@
 'use strict';
 
 var users = {
-  nick: { username: 'nick', password: 'vibe' }
+  nick: { username: 'nick', password: 'vibe' },
+  robby: { username: 'robby', password: 'jr' }
 };
 
 module.exports = ( function() {
-  function getAll() {
-    return users;
+  function findOne( username ) {
+    return users[ username ];
   }
 
   return {
-    getAll: getAll
+    findOne: findOne
   };
 })();

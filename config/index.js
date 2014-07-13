@@ -10,20 +10,20 @@ var logger = require( 'morgan' );
 var methodOverride = require( 'method-override' );
 
 module.exports = function( app ) {
-  app.set( 'title', 'Festivibe' );
+  app.set( 'title', 'festivibe' );
   app.set( 'view engine', 'ejs' );
   app.set( 'views', path.resolve( __dirname, '../app/views' ) );
   app.engine( 'ejs', ejs.__express );
   app.use( logger() );
-  app.use( bodyParser.json() );
   app.use( cookieParser() );
-    app.use( session({
-    name             : 'Festivibe.sid',
-    secret           : 'unts unts unts',
+  app.use( session({
+    name             : 'festivibe.sid',
+    secret           : 'untsuntsunts',
     resave           : true,
     saveUninitialized: true,
     cookie           : { maxAge: 1000 * 60 * 24 * 7 }
   }));
+  app.use( bodyParser.json() );
   app.use( methodOverride() );
   app.use( express.static( path.resolve( __dirname, '../public' ) ) );
 };

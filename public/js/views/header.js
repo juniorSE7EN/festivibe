@@ -1,7 +1,8 @@
 define(
   [ 'backbone',
-    'common' ],
-  function( Backbone, common ) {
+    'common',
+    'header-session' ],
+  function( Backbone, common, HeaderSessionView ) {
     'use strict';
 
     return Backbone.View.extend({
@@ -11,8 +12,7 @@ define(
 
       events: {
         'click .store': 'storeOnClick',
-        'click .blog' : 'blogOnClick',
-        'click .login': 'loginOnClick'
+        'click .blog' : 'blogOnClick'
       },
 
       template: function() {
@@ -24,18 +24,27 @@ define(
           +   '<ul>'
           +     '<li class="store">store</li>'
           +     '<li class="blog">blog</li>'
-          +     '<li class="login">login</li>'
+          +     '<li class="login"></li>'
           +   '</ul>'
           + '</nav>'
           + '<div class="bar"></div>';
       },
 
       initialize: function() {
-        this.render();
+        this.render()
+          .createLogin();
       },
 
       render: function() {
         this.$el.html( this.template() );
+        return this;
+      },
+
+      createLogin: function() {
+        this.$el
+          .find( '.login' )
+          .html( new HeaderSessionView().el );
+        return this;
       },
 
       // event listeners
@@ -45,10 +54,6 @@ define(
 
       blogOnClick: function( e ) {
         common.events.trigger( 'router:hashChange', { route: 'blog', trigger: true } );
-      },
-
-      loginOnClick: function( e ) {
-        common.events.trigger( 'router:hashChange', { route: 'login', trigger: true } );
       }
     });
   }

@@ -23,6 +23,8 @@ define(
       },
 
       hashChange: function( opts ) {
+        if( 'index' === opts.route ) opts.route = '';
+
         this.navigate( opts.route, { trigger: opts.trigger } );
       },
 
