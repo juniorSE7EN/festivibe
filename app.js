@@ -3,7 +3,7 @@
 var http = require( 'http' );
 var express = require( 'express' );
 var config = require( './config' );
-var routues = require( './app/routes' );
+var routes = require( './app/routes' );
 
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
