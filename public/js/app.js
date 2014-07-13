@@ -1,7 +1,8 @@
 define(
-  [ 'backbone',
+  [ 'underscore',
+    'backbone',
     'router' ],
-  function( Backbone, Router ) {
+  function( _, Backbone, Router ) {
     'use strict';
 
     function init() {

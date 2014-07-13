@@ -1,9 +1,14 @@
 define(
   [ 'backbone',
     'views/header',
-    'views/footer' ],
-  function( Backbone, HeaderView, FooterView ) {
+    'views/footer',
+    'views/content/login' ],
+  function( Backbone, HeaderView, FooterView, LoginView ) {
     'use strict';
+
+    var views = {
+      login: LoginView
+    };
 
     return Backbone.View.extend({
       el: '#festivibe',
@@ -38,6 +43,13 @@ define(
           .find( 'footer' )
           .html( new FooterView().el );
         return this;
+      },
+
+      setView: function( view ) {
+        this.$el
+          .find( '.content' )
+          .empty()
+          .html( new views[ view ]().el );
       }
     });
   }

@@ -1,14 +1,15 @@
 define(
   [ 'backbone',
-    'events',
+    'common',
     'views/app' ],
-  function( Backbone, events, AppView ) {
+  function( Backbone, common, AppView ) {
     'use strict';
 
     return Backbone.Router.extend({
       routes: {
-        '': 'index',
-        'blog': 'blog'
+        ''     : 'index',
+        'blog' : 'blog',
+        'login': 'login'
       },
 
       initialize: function() {
@@ -18,7 +19,7 @@ define(
       },
 
       subscribe: function() {
-        this.listenTo( events, 'router:hashChange', this.hashChange );
+        this.listenTo( common.events, 'router:hashChange', this.hashChange );
       },
 
       hashChange: function( opts ) {
@@ -31,6 +32,10 @@ define(
 
       blog: function() {
         console.log( 'blog' );
+      },
+
+      login: function() {
+        this.appView.setView( 'login' );
       }
     });
   }

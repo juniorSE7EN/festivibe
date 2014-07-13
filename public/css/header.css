@@ -1,8 +1,8 @@
 header {
+  position: relative;
   height: 80px;
   padding: 0 4%;
   background: #343C40;
-  border-top: 4px solid #AEDD2B;
 }
 
 header .logo {
@@ -21,7 +21,7 @@ header nav {
 header ul li {
   display: inline-block;
   margin-left: 32px;
-  color: #fff;
+  color: #FFF;
   font-weight: 300;
   line-height: 80px;
 }
@@ -29,4 +29,13 @@ header ul li {
 header ul li:hover {
   color: #36C6FF;
   cursor: pointer;
+}
+
+header .bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 4px;
+  width: 100%;
+  background: #AEDD2B;
 }

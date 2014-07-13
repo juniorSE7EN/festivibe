@@ -1,7 +1,7 @@
 define(
   [ 'backbone',
-    'events' ],
-  function( Backbone, events ) {
+    'common' ],
+  function( Backbone, common ) {
     'use strict';
 
     return Backbone.View.extend({
@@ -10,7 +10,8 @@ define(
       className: 'clearfix',
 
       events: {
-        'click.blog': 'blogOnClick'
+        'click .blog' : 'blogOnClick',
+        'click .login': 'loginOnClick'
       },
 
       template: function() {
@@ -20,10 +21,11 @@ define(
           + '</div>'
           + '<nav>'
           +   '<ul>'
-          +     '<li>blog</li>'
-          +     '<li>login</li>'
+          +     '<li class="blog">blog</li>'
+          +     '<li class="login">login</li>'
           +   '</ul>'
-          + '</nav>';
+          + '</nav>'
+          + '<div class="bar"></div>';
       },
 
       initialize: function() {
@@ -36,7 +38,11 @@ define(
 
       // event listeners
       blogOnClick: function( e ) {
-        events.trigger( 'router:hashChange', { route: 'blog', trigger: true } );
+        common.events.trigger( 'router:hashChange', { route: 'blog', trigger: true } );
+      },
+
+      loginOnClick: function( e ) {
+        common.events.trigger( 'router:hashChange', { route: 'login', trigger: true } );
       }
     });
   }
