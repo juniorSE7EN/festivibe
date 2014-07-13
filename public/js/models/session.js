@@ -4,7 +4,9 @@ define(
     'use strict';
 
     return Backbone.Model.extend({
-      idAttribute: '_id'
+      idAttribute: '_id',
+
+      urlRoot: '/session'
     });
   }
 );

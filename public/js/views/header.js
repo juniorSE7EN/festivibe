@@ -10,6 +10,7 @@ define(
       className: 'clearfix',
 
       events: {
+        'click .store': 'storeOnClick',
         'click .blog' : 'blogOnClick',
         'click .login': 'loginOnClick'
       },
@@ -21,6 +22,7 @@ define(
           + '</div>'
           + '<nav>'
           +   '<ul>'
+          +     '<li class="store">store</li>'
           +     '<li class="blog">blog</li>'
           +     '<li class="login">login</li>'
           +   '</ul>'
@@ -37,6 +39,10 @@ define(
       },
 
       // event listeners
+      storeOnClick: function( e ) {
+        common.events.trigger( 'router:hashChange', { route: 'index', trigger: true } );
+      },
+
       blogOnClick: function( e ) {
         common.events.trigger( 'router:hashChange', { route: 'blog', trigger: true } );
       },
