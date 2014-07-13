@@ -1,14 +1,12 @@
 define(
-  [ 'jquery',
-    'underscore',
-    'backbone' ],
-  function( $, _, Backbone ) {
+  [ 'backbone',
+    'router' ],
+  function( Backbone, Router ) {
     'use strict';
 
     function init() {
-      console.log( $ );
-      console.log( _ );
-      console.log( Backbone );
+      new Router();
+      Backbone.history.start( { pushState: false } );
     }
 
     return { init: init };
