@@ -2,12 +2,18 @@ define(
   [ 'backbone',
     'views/header',
     'views/footer',
+    'views/content/store',
+    'views/content/blog',
+    'views/content/blog-new',
     'views/content/login' ],
-  function( Backbone, HeaderView, FooterView, LoginView ) {
+  function( Backbone, HeaderView, FooterView, StoreView, BlogView, BlogNewView, LoginView ) {
     'use strict';
 
     var views = {
-      login: LoginView
+      store  : StoreView,
+      blog   : BlogView,
+      blogNew: BlogNewView,
+      login  : LoginView
     };
 
     return Backbone.View.extend({

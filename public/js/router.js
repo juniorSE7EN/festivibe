@@ -7,9 +7,10 @@ define(
 
     return Backbone.Router.extend({
       routes: {
-        ''     : 'index',
-        'blog' : 'blog',
-        'login': 'login'
+        ''        : 'index',
+        'blog'    : 'blog',
+        'blog/new': 'blogNew',
+        'login'   : 'login'
       },
 
       initialize: function() {
@@ -29,11 +30,17 @@ define(
       },
 
       index: function() {
-        console.log( 'index' );
+        this.appView.setView( 'store' );
       },
 
       blog: function() {
-        console.log( 'blog' );
+        this.appView.setView( 'blog' );
+      },
+
+      blogNew: function() {
+        if( !common.user.get( 'username' ) ) return this.navigate( '', { trigger: true } );
+
+        this.appView.setView( 'blogNew' );
       },
 
       login: function() {
