@@ -38,7 +38,7 @@ define(
       },
 
       blogNew: function() {
-        if( !common.user.get( 'username' ) ) return this.navigate( '', { trigger: true } );
+        // if( !common.user.get( 'username' ) ) return this.navigate( '', { trigger: true } );
 
         this.appView.setView( 'blogNew' );
       },
